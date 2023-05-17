@@ -4,13 +4,13 @@ Name of feature: __Custom Servers with Node and Express_
 
 Estimate of time needed to complete: _3 hrs____
 
-Start time: _2:00pm____
+Start time: _3:00pm____
 
-Finish time: _____
+Finish time: _9:00 pm____
 
-Actual time needed to complete: _____
+Actual time needed to complete: __6 hrs___
 
-**Author**: Your Name Goes Here
+**Author**: Tiffani Rice
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
