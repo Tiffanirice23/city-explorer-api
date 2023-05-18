@@ -1,4 +1,5 @@
 'use strict'
+const axios = require ('axios');
 
 console.log('My first server');
 
@@ -6,7 +7,7 @@ const express = require('express');
 // const require = require('express/lib/request');
 require ('dotenv').config();
 
-let data = require('./data/weather.json');
+// let data = require('./data/weather.json');
 const cors = require('cors');
 
 const app = express();
@@ -20,16 +21,31 @@ app.get('/', (request, response) => {
   response.send ('Hello from my server!');
 });
 
-app.get('/weather', (request, response) => {
+app.get('/weather', async (request, response) => {
   let {searchquery} = request.query;
+  // console.log(request.query);
+
+  let lat = request.query.lat;
+  let lon = request.query.lon;
+
+  // let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&unit=I&days=5&lat=${lat}&lon=${lon}`
+
+  let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}&days=5&units=I`
+
   try {
-    let forecastArray = [];
-    let city = data.find(city => city.city_name.toLowerCase() === searchquery.toLowerCase());
+    let weatherData = await axios.get(url);
+    let longitude = weatherData.data.lon;
+    let latitude = weatherData.data.lat;
+    console.log(longitude);
+    let weatherArray = weatherData.data.data.map(weatherProp => new Forecast(weatherProp, latitude, longitude));
+    response.status(200).send(weatherArray);
+
+    /*let city = data.find(city => city.city_name.toLowerCase() === searchquery.toLowerCase());
     city.data.forEach(day => {
       let description = `Low of ${day.low_temp}, high of ${day.high_temp} with ${day.weather.description}`
       forecastArray.push(new Forecast(day.valid_date, description));
     });
-    response.send(forecastArray);
+    response.send(forecastArray);*/
   } catch(e) {
     response.status(400).send("City not found");
   }
@@ -41,9 +57,11 @@ app.get('*', (request, response) =>{
 })
 
 class Forecast {
-  constructor(date, description) {
-    this.date = date;
-    this.description = description;
+  constructor(weatherProp, latitude, longitude) {
+    this.date = weatherProp.valid_date;
+    this.description = `${weatherProp.temp} farenheit with ${weatherProp.weather.description}`;
+    this.lat = latitude;
+    this.lon = longitude;
   }
 }
 
