@@ -6,14 +6,17 @@ Estimate of time needed to complete: _3 hrs____
 
 Start time: _3:00pm____
 
-Finish time: _9:00 pm____
+Finish time: _11:00 pm____
 
-Actual time needed to complete: __6 hrs___
+Actual time needed to complete: __8 hrs___
 
 **Author**: Tiffani Rice
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ![Lab07 Whiteboard](./WRRC_Lab07.png)
+
+![Lab08 Whiteboard](./WRRC_Lab08.png)
+
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
