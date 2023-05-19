@@ -1,38 +1,33 @@
 # city-explorer-api
 
-Name of feature: __Refactoring into Modules_
+Name of feature: __Advanced Topics__
 
-Estimate of time needed to complete: _3 hrs____
+Estimate of time needed to complete: _2 hrs____
 
 Start time: _2:30pm____
 
-Finish time: _7:30:00 pm____
+Finish time: _4:30:00 pm____
 
 Actual time needed to complete: __5 hrs___
 
 **Author**: Tiffani Rice
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
+## Overview
+A website that allows users to see realtime weather, map, and movie information simply by typing in the name of a city. This application used advanced APIs and a caching support feature.
+## Getting Started
+Def started it like the Black Eyed Peas.
+
+## Architecture
+Javascript components that get data from storage
+
+## Change Log
+
 ![Lab07 Whiteboard](./WRRC_Lab07.png)
 
 ![Lab08 Whiteboard](./WRRC_Lab08.png)
 
-![Lab09 Whiteboard](./WRRC_Lab08.png)
-
-
-## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
-
-## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-
-## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+![Lab10 Whiteboard](./WRRC_Lab10.png)
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Anthony Sinitsa, Tony Regalado
