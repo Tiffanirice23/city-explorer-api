@@ -1,14 +1,14 @@
 # city-explorer-api
 
-Name of feature: __Custom Servers with Node and Express_
+Name of feature: __Refactoring into Modules_
 
 Estimate of time needed to complete: _3 hrs____
 
-Start time: _3:00pm____
+Start time: _2:30pm____
 
-Finish time: _11:00 pm____
+Finish time: _7:30:00 pm____
 
-Actual time needed to complete: __8 hrs___
+Actual time needed to complete: __5 hrs___
 
 **Author**: Tiffani Rice
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
@@ -16,6 +16,8 @@ Actual time needed to complete: __8 hrs___
 ![Lab07 Whiteboard](./WRRC_Lab07.png)
 
 ![Lab08 Whiteboard](./WRRC_Lab08.png)
+
+![Lab09 Whiteboard](./WRRC_Lab08.png)
 
 
 ## Overview

@@ -44,7 +44,7 @@ function parseWeathers(weatherData) {
 class Forecast {
   constructor(weatherProp) {
     this.date = weatherProp.valid_date;
-    this.description = `It is ${weatherProp.temp} Farenheit with ${weatherProp.weather.description}`;
+    this.description = `${weatherProp.temp} Farenheit with ${weatherProp.weather.description}`;
     // this.lat = latitude;
     // this.lon = longitude;
   }
