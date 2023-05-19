@@ -3,12 +3,12 @@
 const axios = require('axios');
 
 let getWeatherModule = async (request, response) => {
-  let {lat, lon} = request.query;
+let {lat, lon} = request.query;
 // console.log('+++++++++++',lat, lon);
 let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lang=en&lat=${lat}&lon=${lon}&days=5&units=I`;
-let weatherData = await axios.get(url);
   // console.log('=++++===+++', weatherData.data);
   try {
+    let weatherData = await axios.get(url);
     // let longitude = weatherData.data.lon;
     // let latitude = weatherData.data.lat;
     // console.log(longitude);

@@ -11,8 +11,7 @@ let getMoviesModule = async (request, response, next) => {
     let movieMap = parseMovies(movieData.data.results);
     movieMap.then(movie => {
       response.status(200).send(movie);
-    })
-  
+    });
   } catch (e) {
     response.status(400).send("Movie in your City not found");
   }
