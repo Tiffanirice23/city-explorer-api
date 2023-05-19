@@ -1,43 +1,41 @@
-'use strict'
+'use strict';
 
 const axios = require('axios');
+let cache = require('./cache.js');
 
-let getWeatherModule = async (request, response) => {
-let {lat, lon} = request.query;
-// console.log('+++++++++++',lat, lon);
-let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lang=en&lat=${lat}&lon=${lon}&days=5&units=I`;
-  // console.log('=++++===+++', weatherData.data);
+
+let getWeather = async(request, response) => {
+  let {lat, lon} = request.query;
+  const url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lang=en&lat=${lat}&lon=${lon}&days=5&units=I`;
   try {
-    let weatherData = await axios.get(url);
-    // let longitude = weatherData.data.lon;
-    // let latitude = weatherData.data.lat;
-    // console.log(longitude);
-    // let weatherArray = weatherData.data.map(weatherProp => new Forecast(weatherProp));
-    let weatherArray = parseWeathers(weatherData.data);
-    // console.log(weatherData.data);
-    weatherArray.then(weather => {response.status(200).send(weather);})
-   
-  
+    const key = 'weather-' + lat + lon;
+    let timeToCache = 1000 * 60 * 60 * 24;
 
-    // let city = data.find(city => city.city_name.toLowerCase() === searchquery.toLowerCase());
-    // city.data.forEach(day => {
-    //   let description = `Low of ${day.low_temp}, high of ${day.high_temp} with ${day.weather.description}`
-    //   forecastArray.push(new Forecast(day.valid_date, description));
-    // });
-    // response.send(forecastArray);
+    if (cache[key] && (Date.now() - cache[key].timestamp < timeToCache)) {
+      console.log(`Weather IS in the cache`);
+    } else {
+      console.log('Weather is NOT in the cache. Make a new request!');
+      cache[key] = {};
+      cache[key].timestamp = Date.now();
+      cache[key].data = await axios.get(url)
+        .then(response => parseWeather(response.data));
+    }
+
+    response.status(200).send(cache[key].data);
   } catch (e) {
-    response.status(400).send("City not found");
+    response.status(400).send("Weather not found");
   }
 };
 
-function parseWeathers(weatherData) {
+
+function parseWeather(weatherData) {
   try {
-    const weatherSummarize = weatherData.data.map(fiveDay => {
-      return new Forecast(fiveDay);
+    const weatherSummaries = weatherData.data.map(day => {
+      return new Forecast(day);
     });
-    return Promise.resolve(weatherSummarize);
-  } catch (error) {
-    return Promise.reject(error);
+    return Promise.resolve(weatherSummaries);
+  } catch (e) {
+    return Promise.reject(e);
   }
 }
 
@@ -50,4 +48,4 @@ class Forecast {
   }
 }
 
-module.exports = getWeatherModule;
+module.exports = getWeather;
