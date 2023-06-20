@@ -1,4 +1,4 @@
-# city-explorer-api
+<!-- # city-explorer-api
 
 Name of feature: __Advanced Topics__
 
@@ -30,4 +30,4 @@ Javascript components that get data from storage
 ![Lab10 Whiteboard](./WRRC_Lab10.png)
 
 ## Credit and Collaborations
-Anthony Sinitsa, Tony Regalado
+Anthony Sinitsa, Tony Regalado -->
